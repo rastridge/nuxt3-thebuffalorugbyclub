@@ -1,0 +1,74 @@
+<template>
+	isLoading {{ isLoading }} -- page {{ page }} -- pageCount {{ pageCount }}
+	<div class="app-header">
+		<div v-if="isLoading">Loading...</div>
+		<div v-else>
+			<span v-if="showAllPages"> {{ pageCount }} page(s) </span>
+			<span v-else>
+				<button :disabled="page <= 1" @click="page--">❮</button>
+				{{ page }} / {{ pageCount }}
+				<button :disabled="page >= pageCount" @click="page++">❯</button>
+			</span>
+
+			<label class="right">
+				<input v-model="showAllPages" type="checkbox" />
+				Show all pages
+			</label>
+		</div>
+	</div>
+
+	<div class="app-content">
+		<vue-pdf-embed ref="pdfRef" :source="props.src" :page="page" />
+	</div>
+</template>
+
+<script setup>
+	import VuePdfEmbed from 'vue-pdf-embed'
+
+	const isLoading = ref(true)
+	const page = ref(null)
+	const pageCount = ref(1)
+	const pdfSource = ref(
+		'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf'
+	)
+	const showAllPages = ref(true)
+
+	//
+	// Incoming
+	//
+	const props = defineProps({
+		src: { String, required: true },
+	})
+
+	watch(page, () => {
+		page.value = showAllPages.value ? null : 1
+	})
+
+	const handleDocumentRender = (args) => {
+		// console.log('IN handleDocumentRender args =', args)
+		isLoading.value = false
+		pageCount.value = $refs.pdfRef.pageCount
+	}
+</script>
+
+<style scoped>
+	.vue-pdf-embed > div {
+		margin-bottom: 8px;
+		box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.1);
+	}
+
+	.app-header {
+		padding: 16px;
+		box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.1);
+		background-color: #555;
+		color: #ddd;
+	}
+
+	.app-content {
+		padding: 24px 16px;
+	}
+
+	.right {
+		float: right;
+	}
+</style>

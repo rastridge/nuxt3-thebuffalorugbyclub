@@ -1,0 +1,215 @@
+// NEEDS RLACEMENT
+https://media.my-test-site.net/upload
+http://buffalorugby.org/_img
+https://buffalorugby.org/_img
+http://buffalorugby.org/imgs
+https://buffalorugby.org/imgs
+http://buffalorugby.org/xoda
+https://buffalorugby.org/xoda
+https://buffalorugby.org/imgs
+//imgs
+//_img
+//xoda
+
+// USING
+UPDATE inbrc_news SET news_article
+UPDATE inbrc_newsletters SET newsletter_body_html
+UPDATE inbrc_content SET content_body
+UPDATE inbrc_sponsors SET ad_image_path =
+UPDATE inbrc_clubhouse SET clubhouse_filepath =
+UPDATE inbrc_ads SET ad_path =
+UPDATE inbrc_archive SET archive_filepath =
+
+
+// NEWSLETTERS
+
+//  remaining
+SELECT
+   `newsletter_id`,
+   `created_dt`,
+   SUBSTR(
+       `newsletter_body_html`,
+       INSTR(`newsletter_body_html`, 'src='),
+       100
+   ) AS src
+FROM
+   `inbrc_newsletters`
+WHERE
+   INSTR(`newsletter_body_html`, 'src=') AND `newsletter_body_html`
+        NOT LIKE '%https://media.buffalorugby.org%'
+   ORDER BY src;
+
+
+// fix _img
+UPDATE
+    inbrc_newsletters
+SET
+    newsletter_body_html =
+REPLACE
+    (
+        newsletter_body_html,
+        'http://buffalorugby.org/_img',
+        'https://media.buffalorugby.org/_img'
+    )
+WHERE
+    `newsletter_body_html` LIKE '%http://buffalorugby.org/_img%'
+
+// NEWS
+
+//  remaining
+SELECT
+   `news_id`,
+   `news_event_dt`,
+   SUBSTR(
+       `news_article`,
+       INSTR(`news_article`, 'src='),
+       100
+   ) AS src
+FROM
+   `inbrc_news`
+WHERE
+   INSTR(`news_article`, 'src=') AND `news_article`
+        NOT LIKE '%https://media.buffalorugby.org%'
+   ORDER BY src;
+
+
+// fix _img
+UPDATE
+    inbrc_news
+SET
+    `news_article` =
+REPLACE
+    (
+        `news_article`,
+        'http://buffalorugby.org/_all_imgs',
+        'https://media.buffalorugby.org/_img/'
+    )
+WHERE
+    `news_article` LIKE '%http://buffalorugby.org/_all_imgs%'
+
+// CLUBHOUSE
+
+//  remaining
+SELECT
+    clubhouse_id,
+   SUBSTR(
+       `clubhouse_filepath`,
+       INSTR(`clubhouse_filepath`, '/_all_imgs'),
+       100
+   ) AS src
+FROM
+   `inbrc_clubhouse`
+WHERE
+   INSTR(`clubhouse_filepath`, '/_all_imgs') AND `clubhouse_filepath`
+        NOT LIKE '%https://media.buffalorugby.org%'
+   ORDER BY src;
+
+
+// fix _img
+UPDATE
+    inbrc_clubhouse
+SET
+    `clubhouse_filepath` =
+REPLACE
+    (
+        `clubhouse_filepath`,
+        '/_all_imgs',
+        'https://media.buffalorugby.org/_all_imgs'
+    )
+WHERE
+    `clubhouse_filepath` LIKE '/_all_imgs%'
+
+//////////////// ADS
+//  remaining
+SELECT
+    ad_id,
+   SUBSTR(
+       `ad_path`,
+       INSTR(`ad_path`, '/_img'),
+       100
+   ) AS src
+FROM
+   `inbrc_ads`
+WHERE
+   INSTR(`ad_path`, '/_img') AND `ad_path`
+        NOT LIKE '%https://media.buffalorugby.org%'
+   ORDER BY src;
+
+
+// fix _img
+UPDATE
+    inbrc_ads
+SET
+    `ad_path` =
+REPLACE
+    (
+        `ad_path`,
+        '/_img',
+        'https://media.buffalorugby.org/_img'
+    )
+WHERE
+    `ad_path` LIKE '/_img%'
+
+
+//////////////// ARCHIVE
+//  remaining
+SELECT
+    archive_id,
+   SUBSTR(
+       `archive_filepath`,
+       INSTR(`archive_filepath`, '/xoda/files'),
+       100
+   ) AS src
+FROM
+   `inbrc_archive`
+WHERE
+   INSTR(`archive_filepath`, '/xoda/files') AND `archive_filepath`
+        NOT LIKE '%https://media.buffalorugby.org%'
+   ORDER BY src;
+
+
+// fix _img
+UPDATE
+    inbrc_archive
+SET
+    `archive_filepath` =
+REPLACE
+    (
+        `archive_filepath`,
+        '/xoda/files',
+        'https://media.buffalorugby.org/xoda/files'
+    )
+WHERE
+    `archive_filepath` LIKE '/xoda/files%'
+
+//////////////// CONTENT
+//  remaining
+SELECT
+    content_id,
+   SUBSTR(
+       `content_body`,
+       INSTR(`content_body`, 'src='),
+       100
+   ) AS src
+FROM
+   `inbrc_content`
+WHERE
+   INSTR(`content_body`, 'src=') AND `content_body`
+        NOT LIKE '%https://media.buffalorugby.org%'
+   ORDER BY src;
+
+
+// fix _img
+UPDATE
+    inbrc_content
+SET
+    `content_body` =
+REPLACE
+    (
+        `content_body`,
+        'api.buffalorugby.org',
+        'media.buffalorugby.org'
+    )
+WHERE
+    `content_body` LIKE '%api.buffalorugby.org%'
+

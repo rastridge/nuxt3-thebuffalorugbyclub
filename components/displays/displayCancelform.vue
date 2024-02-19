@@ -1,7 +1,7 @@
 <template>
 	<Button
 		class="p-button-sm mb-1"
-		label="Cance"
+		label="Cancel"
 		@click="cancelForm()"
 		severity="warning"
 	></Button>

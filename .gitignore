@@ -7,3 +7,4 @@ dist
 .npmrc
 coverage
 /.idea/
+.DS_Store

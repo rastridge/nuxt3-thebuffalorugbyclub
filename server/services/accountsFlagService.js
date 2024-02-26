@@ -254,12 +254,12 @@ async function addFlagByRegister({
 }) {
 	// check for other users with proposed email address
 	let sql = `select * from inbrc_accounts_flag where deleted = 0`
-	const accounts = await doDBQueryBuffalorugby(sql)
-	let account = accounts.find(
+	const temp = await doDBQueryBuffalorugby(sql)
+	let emailExists = temp.find(
 		(u) => u.account_email.toLowerCase() === account_email.toLowerCase()
 	)
-
-	if (!account) {
+	let account = []
+	if (!emailExists) {
 		// let hashedpassword = md5(account_remind).substring(3,11)
 
 		sql = `INSERT INTO inbrc_accounts_flag
@@ -325,7 +325,7 @@ async function addFlagByRegister({
 			mail_recipient,
 			sms_recipient
 		)
-		const account = await doDBQueryBuffalorugby(sql, inserts)
+		account = await doDBQueryBuffalorugby(sql, inserts)
 		account.error = ''
 
 		const msg =

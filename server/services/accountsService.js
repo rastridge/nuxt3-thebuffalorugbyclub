@@ -21,11 +21,11 @@ export const accountsService = {
 	getShow,
 	getMemberTypes,
 	getMemberAdminTypes,
-	getOneFlag,
-	addOneFlag,
-	addFlagByRegister,
-	getAllFlag,
-	editOneFlag,
+	// getOneFlag,
+	// addOneFlag,
+	// addFlagByRegister,
+	// getAllFlag,
+	// editOneFlag,
 	lookupByEmail,
 }
 
@@ -510,7 +510,7 @@ async function getShow() {
 	const accounts = await doDBQueryBuffalorugby(sql)
 	return accounts
 }
-
+/* 
 async function getAllFlag() {
 	const sql = `SELECT
 								account_id as id,
@@ -594,7 +594,8 @@ async function getOneFlag(id) {
 	account = await doDBQueryBuffalorugby(sql)
 	return account[0]
 }
-
+ */
+/* 
 async function addOneFlag({
 	member_guardian,
 	member_dob,
@@ -715,7 +716,8 @@ async function addOneFlag({
 
 	return account
 }
-
+ */
+/* 
 async function addFlagByRegister({
 	member_guardian,
 	member_dob,
@@ -973,7 +975,7 @@ async function editOneFlag({
 	}
 	return account
 }
-
+ */
 async function getOfficers() {
 	const sql = `SELECT
 									a.account_id,

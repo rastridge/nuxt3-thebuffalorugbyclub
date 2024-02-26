@@ -256,7 +256,7 @@ async function addFlagByRegister({
 	let sql = `select * from inbrc_accounts_flag where deleted = 0`
 	const accounts = await doDBQueryBuffalorugby(sql)
 	let account = accounts.find(
-		(u) => u.account_emai.toLowerCase() === account_email.toLowerCase()
+		(u) => u.account_email.toLowerCase() === account_email.toLowerCase()
 	)
 
 	if (!account) {

@@ -1,14 +1,14 @@
 <script setup>
 	import { useAlertStore } from '~/stores/alertStore'
 	const alert = useAlertStore()
-	const { onSubmitAdd } = useSubmit()
+	const { onSubmitAddByGuest } = useSubmit()
 
 	//
 	// Accounts form action
 	//
 	const onSubmit = async function (form_state) {
 		alert.clear()
-		await onSubmitAdd('accounts_flag', form_state)
+		await onSubmitAddByGuest('accounts_flag', form_state)
 		if (alert.message === null) {
 			navigateTo(`/`)
 		}

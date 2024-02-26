@@ -7,9 +7,11 @@
 			<div class="topsectionitem">
 				<admin-header :title="app" />
 			</div>
+
 			<div class="topsectionitem">
 				<lookup-by-email />
 			</div>
+
 			<div class="topsectionitem">
 				<p class="my-header-style">Member type</p>
 				<Dropdown
@@ -20,6 +22,7 @@
 					placeholder="Select a member type"
 				/>
 			</div>
+
 			<div class="topsectionitem">
 				<FormKit
 					v-model="alpha"

@@ -8,10 +8,6 @@
 				<admin-header :title="app" />
 			</div>
 
-			<!-- 			<p v-if="!accounts" class="topsectionitem">
-				<ProgressBar mode="indeterminate" style="height: 6px"></ProgressBar>
-				Loading accounts ...
-			</p> -->
 			<div class="topsectionitem">
 				<p class="my-header-style">Member type</p>
 				<Dropdown
@@ -20,9 +16,11 @@
 					:options="memberTypeOptions"
 					optionLabel="label"
 					optionValue="value"
+					placeholder="Select a member type"
 				/>
 			</div>
 		</div>
+
 		<div>
 			<render-list
 				:data="filteredData"

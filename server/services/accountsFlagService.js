@@ -119,6 +119,7 @@ async function addOne({
 	account_addr_postal,
 
 	member_year,
+	member_type_id,
 
 	account_addr_phone,
 	member_show_phone,
@@ -158,6 +159,7 @@ async function addOne({
 								account_addr_postal = ?,
 
 								member_year = ?,
+								member_type_id = ?,
 
 								account_addr_phone = ?,
 								member_show_phone = ?,
@@ -166,7 +168,6 @@ async function addOne({
 								mail_recipient = ?,
 								sms_recipient = ?,
 
-								member_type_id = '12',
 
 								STATUS = 1,
 								deleted = 0,
@@ -193,6 +194,7 @@ async function addOne({
 			account_addr_postal,
 
 			member_year,
+			member_type_id,
 
 			account_addr_phone,
 			member_show_phone,

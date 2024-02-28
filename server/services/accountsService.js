@@ -161,8 +161,8 @@ async function addOne(info) {
 									member_type2_id = ?,
 									member_admin_type_id = ?,
 									member_admin_type2_id = ?,
-									status = 1,
 
+									status = 1,
 									created_dt = NOW(),
 									modified_dt= NOW();`
 			const {

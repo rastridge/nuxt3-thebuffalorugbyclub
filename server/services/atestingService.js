@@ -9,14 +9,7 @@ export const atestingService = {
 }
 
 async function getAll() {
-	const sql = `SELECT
-								*
-                FROM
-									atesting
-                WHERE
-									1`
-	const results = await doDBQueryTZ0(sql)
-	return results
+	return 'It works'
 }
 
 async function getOne(id) {

@@ -260,6 +260,7 @@
 	state.value.account_addr_street_ext = ''
 	state.value.account_addr_country = 'US'
 	state.value.member_show_addr = '1'
+	state.value.member_type_id = '2'
 	state.value.member_prev_club = 'None'
 	state.value.newsletter_recipient = '1'
 	state.value.mail_recipient = '0'

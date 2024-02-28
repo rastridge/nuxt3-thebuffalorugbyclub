@@ -200,10 +200,12 @@
 	state.value.account_addr_state = 'NY'
 	state.value.account_addr_street_ext = ''
 	state.value.account_addr_country = 'US'
+	state.value.member_type_id = '11'
+
 	state.value.newsletter_recipient = '1'
 	state.value.mail_recipient = '0'
 	state.value.sms_recipient = '1'
-	state.value.member_type_id = '12'
+	state.value.member_type_id = '11'
 
 	//
 	// EDIT if there is an id - ADD if not
@@ -225,18 +227,27 @@
 		state.value = data.value
 	}
 
+	// form handlers
 	//
+	const submitForm = (state) => {
+		saving.value = true
+		emit('submitted', state)
+	}
+
+	// errors
+	const errors = computed(() => {
+		return alert.message !== null ? [alert.message] : ['']
+	})
+
 	// Formkit preparations
 	//
 	// create coutry and region options formatted for Formkit
 	const justCountries = ref(getCountries())
 	const justRegions = ref(setRegions(state.value.account_addr_country))
+
 	// adjust date for formkit date input
 	state.value.member_dob = $dayjs(state.value.member_dob).format('YYYY-MM-DD')
-	// errors for formkit
-	const errors = computed(() => {
-		return alert.message !== null ? [alert.message] : ['']
-	})
+
 	// Region depends on country
 	onMounted(() => {
 		// Use the IDs of the inputs you want to get
@@ -249,12 +260,4 @@
 			justRegions.value = setRegions(payload)
 		})
 	})
-	//
-	// form handlers
-	//
-	const submitForm = (state) => {
-		saving.value = true
-
-		emit('submitted', state)
-	}
 </script>

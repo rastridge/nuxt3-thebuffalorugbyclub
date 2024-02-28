@@ -8,12 +8,7 @@
 				submit-label="Submit member"
 				@submit="submitForm"
 			>
-				<p class="alert-danger w-full">
-					Form must be completed by legal guardian or parent of the player being
-					registered
-				</p>
 				<display-alert />
-
 				<FormKit
 					label="Prove you are a human. What is 3x5?"
 					type="text"
@@ -25,9 +20,16 @@
 					type="text"
 					validation="required"
 				/>
+
 				<FormKit
 					label="Last Name"
 					name="member_lastname"
+					type="text"
+					validation="required"
+				/>
+				<FormKit
+					label="Previous club(s)"
+					name="member_prev_club"
 					type="text"
 					validation="required"
 				/>
@@ -38,48 +40,7 @@
 					validation="required|email"
 					:errors="errors"
 				/>
-				<FormKit
-					type="date"
-					label="DOB"
-					name="member_dob"
-					validation="required"
-				/>
-				<FormKit
-					type="select"
-					label="Gender"
-					name="member_gender"
-					:options="[
-						{ label: 'Male', value: 1 },
-						{ label: 'Female', value: 0 },
-					]"
-					validation="required"
-				/>
-				<FormKit
-					type="text"
-					label="Guardian"
-					name="member_guardian"
-					validation="required"
-				/>
-				<FormKit
-					type="select"
-					label="Permission to participate"
-					name="flag_legal"
-					:options="[
-						{ label: 'Yes', value: 1 },
-						{ label: 'No', value: 0 },
-					]"
-					validation="required"
-				/>
-				<FormKit
-					type="select"
-					label="Photo permission"
-					name="flag_photo"
-					:options="[
-						{ label: 'Yes', value: 1 },
-						{ label: 'No', value: 0 },
-					]"
-					validation="required"
-				/>
+
 				<FormKit
 					type="text"
 					label="Street"
@@ -131,43 +92,71 @@
 					}"
 					validation-visibility="live"
 				/>
-				<FormKit
-					type="select"
-					label="Receive newsletter?"
-					name="newsletter_recipient"
-					:options="[
-						{ label: 'Yes', value: 1 },
-						{ label: 'No', value: 0 },
-					]"
-				/>
-				<FormKit
-					type="select"
-					label="Receive US Mail?"
-					name="mail_recipient"
-					:options="[
-						{ label: 'Yes', value: 1 },
-						{ label: 'No', value: 0 },
-					]"
-				/>
-				<FormKit
-					type="select"
-					label="Receive SMS messages?"
-					name="sms_recipient"
-					:options="[
-						{ label: 'Yes', value: 1 },
-						{ label: 'No', value: 0 },
-					]"
-				/>
 				<display-alert />
-				<display-cancelform :destination="'/'" />
+				<display-cancelform />
 			</FormKit>
-
 			<p v-if="saving">
 				<ProgressBar mode="indeterminate" style="height: 6px"></ProgressBar>
 				Saving ...
 			</p>
 		</div>
 	</div>
+
+	<!-- Modal -->
+	<Dialog
+		v-model:visible="displayModal"
+		:breakpoints="{ '960px': '75vw', '640px': '90vw' }"
+		:style="{ width: '50vw' }"
+		modal
+	>
+		<template #header>
+			<div>
+				<span class="text-lg font-semibold"
+					>Thank you for considering the Buffalo Rugby Club</span
+				>
+			</div>
+		</template>
+		<p>
+			Registering is an expression of interest in being informed of the club
+			activities and does not imply any commitment financially or otherwise.
+			Just come to practice and see if we're right for you.
+		</p>
+
+		<p>
+			To be a full time member eligible to play in sanctioned USA Rugby
+			competitions you will be required to:
+		</p>
+		<ul>
+			<li>Become a member of USA Rugby $</li>
+			<li>Pay Buffalo Rugby Club dues $</li>
+			<li>Practice 2 hours twice a week</li>
+			<li>
+				Have the ability to travel on weekends to away games as far as NYC $
+			</li>
+		</ul>
+		<p>
+			We love our sport. We take our preparation seriously and play hard. Join
+			us.
+		</p>
+		<p>
+			<nuxt-link :to="'/schedule/'"><a> See current schedule </a> </nuxt-link>
+		</p>
+
+		<template #footer>
+			<Button
+				label="Cancel"
+				icon="pi pi-times"
+				class="p-button-text"
+				@click="navigateTo('/')"
+			/>
+			<Button
+				label="Continue"
+				icon="pi pi-check"
+				class="p-button-text"
+				@click="closeModal()"
+			/>
+		</template>
+	</Dialog>
 </template>
 
 <script setup>
@@ -184,7 +173,12 @@
 	// Outgoing
 	//
 	const emit = defineEmits(['submitted'])
-
+	//
+	// Incoming
+	//
+	const props = defineProps({
+		id: { Number, default: 0 },
+	})
 	//
 	// initialize form for add
 	//
@@ -192,26 +186,61 @@
 
 	state.value.member_year = $dayjs().format('YYYY')
 	state.value.account_addr_phone = '+1716'
+	state.value.member_show_phone = '1'
 	state.value.account_addr_state = 'NY'
 	state.value.account_addr_street_ext = ''
 	state.value.account_addr_country = 'US'
+	state.value.member_show_addr = '1'
 	state.value.newsletter_recipient = '1'
 	state.value.mail_recipient = '0'
 	state.value.sms_recipient = '1'
-	state.value.member_type_id = '12'
+	state.value.member_type_id = '9'
+	state.value.member_prev_club = 'None'
+	state.value.member_type2_id = ''
+	state.value.member_admin_type_id = '0'
+	state.value.member_admin_type2_id = '0'
+	state.value.member_position = ''
+	state.value.member_nickname = ''
 
 	//
-	// Formkit preparations
+	// edit if there is an id - add if not
 	//
-	// create coutry and region options formatted for Formkit
-	const justCountries = ref(getCountries())
-	const justRegions = ref(setRegions(state.value.account_addr_country))
-	// adjust date for formkit date input
-	state.value.member_dob = $dayjs(state.value.member_dob).format('YYYY-MM-DD')
-	// errors for formkit
+	if (props.id !== 0) {
+		//
+		// Initialize Edit form
+		//
+		const {
+			data: formdata,
+			pending,
+			error,
+			refresh,
+		} = await useFetch(`/accounts/${props.id}`, {
+			key: props.id,
+			method: 'get',
+			headers: {
+				authorization: auth.user.token,
+			},
+		})
+		state.value = formdata.value
+	}
+
+	// form handlers
+	//
+	const submitForm = (state) => {
+		saving.value = true
+		emit('submitted', state)
+	}
+
+	// trying to get rid of "Saving"
+	// alert.message !== null ? (saving.value = false) : (saving.value = true)
+
+	// errors is Formkit error array
 	const errors = computed(() => {
 		return alert.message !== null ? [alert.message] : ['']
 	})
+
+	// Formkit preparations
+	//
 	// Region depends on country
 	onMounted(() => {
 		// Use the IDs of the inputs you want to get
@@ -224,11 +253,21 @@
 			justRegions.value = setRegions(payload)
 		})
 	})
+
+	// create coutry and region options formatted for Formkit
+	const justCountries = ref(getCountries())
+	// justCountries.value = getCountries()
+	const justRegions = ref(setRegions(state.value.account_addr_country))
+	// set regions for initial country
+	// justRegions.value = setRegions(state.value.account_addr_country)
+
+	// progress modal
 	//
-	// form handlers
-	//
-	const submitForm = (state) => {
-		saving.value = true
-		emit('submitted', state)
+	const displayModal = ref(true)
+	// const openProgressModal = () => {
+	// 	displayModal.value = true
+	// }
+	const closeModal = () => {
+		displayModal.value = false
 	}
 </script>

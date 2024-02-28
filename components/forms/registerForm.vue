@@ -169,17 +169,10 @@
 	const { getCountries, setRegions } = useLocations()
 	const saving = ref(false)
 
-	//
 	// Outgoing
 	//
 	const emit = defineEmits(['submitted'])
-	//
-	// Incoming
-	//
-	const props = defineProps({
-		id: { Number, default: 0 },
-	})
-	//
+
 	// initialize form for add
 	//
 	const state = ref({})
@@ -202,48 +195,6 @@
 	state.value.member_position = ''
 	state.value.member_nickname = ''
 
-	//
-	// edit if there is an id - add if not
-	//
-	if (props.id !== 0) {
-		//
-		// Initialize Edit form
-		//
-		const {
-			data: formdata,
-			pending,
-			error,
-			refresh,
-		} = await useFetch(`/accounts/${props.id}`, {
-			key: props.id,
-			method: 'get',
-			headers: {
-				authorization: auth.user.token,
-			},
-		})
-		state.value = formdata.value
-	}
-	//
-	// create coutry and region options formatted for Formkit
-	const justCountries = ref(getCountries())
-	// justCountries.value = getCountries()
-
-	const justRegions = ref(setRegions(state.value.account_addr_country))
-	// set regions for initial country
-	// justRegions.value = setRegions(state.value.account_addr_country)
-
-	//
-	// progress modal
-	//
-	const displayModal = ref(true)
-	// const openProgressModal = () => {
-	// 	displayModal.value = true
-	// }
-	const closeModal = () => {
-		displayModal.value = false
-	}
-
-	//
 	// form handlers
 	//
 	const submitForm = (state) => {
@@ -251,17 +202,16 @@
 		emit('submitted', state)
 	}
 
-	//
-	// errors
-	//
+	// trying to get rid of "Saving"
+	// alert.message !== null ? (saving.value = false) : (saving.value = true)
+
+	// errors is Formkit error array
 	const errors = computed(() => {
-		return alert.message !== null
-			? ['Account with this email already exists']
-			: ['']
+		return alert.message !== null ? [alert.message] : ['']
 	})
 
+	// Formkit preparations
 	//
-	// FormKit stuff
 	// Region depends on country
 	onMounted(() => {
 		// Use the IDs of the inputs you want to get
@@ -274,4 +224,19 @@
 			justRegions.value = setRegions(payload)
 		})
 	})
+
+	// create coutry and region options formatted for Formkit
+	const justCountries = ref(getCountries())
+	// justCountries.value = getCountries()
+	const justRegions = ref(setRegions(state.value.account_addr_country))
+	// set regions for initial country
+	// justRegions.value = setRegions(state.value.account_addr_country)
+
+	// Info modal
+	//
+	const displayModal = ref(true)
+
+	const closeModal = () => {
+		displayModal.value = false
+	}
 </script>

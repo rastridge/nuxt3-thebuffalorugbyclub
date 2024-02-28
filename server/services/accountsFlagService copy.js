@@ -202,15 +202,15 @@ async function addOne({
 			sms_recipient
 		)
 		const account = await doDBQueryBuffalorugby(sql, inserts)
-		// account.error = ''
+		account.error = ''
 
 		const message =
 			'<h3>An Buffalo Rugby Club youth flag rugby account for ' +
 			member_firstname +
 			' ' +
 			member_lastname +
-			'  has been created with email = ' +
-			lc_account_email +
+			'  has been created with mail = ' +
+			account_email +
 			'</h3>'
 
 		await sendEmail(
@@ -220,9 +220,8 @@ async function addOne({
 			message
 		)
 	} else {
-		msg = 'Account with email ' + lc_account_email + ' already exists'
+		msg = 'Account with email ' + account_email + ' already exists'
 	}
-
 	return { message: msg }
 }
 
@@ -234,6 +233,7 @@ async function addFlagByRegister({
 	flag_photo,
 
 	account_email,
+	// account_remind,
 	member_firstname,
 	member_lastname,
 

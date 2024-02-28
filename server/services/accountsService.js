@@ -121,7 +121,6 @@ async function addOne(info) {
 
 		// check for existing email
 		let account = []
-		// check for other users with proposed email address
 		let msg = null // will be returned with message if email exists
 		let sql = `SELECT * FROM inbrc_accounts WHERE deleted = 0`
 		const [rows, fields] = await CONN.execute(sql)

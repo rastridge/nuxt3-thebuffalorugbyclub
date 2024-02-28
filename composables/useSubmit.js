@@ -1,6 +1,6 @@
 //
-// used in all except Newsletters an SMS
-// they must handle Send Now Send Later
+// used in all except Newsletters and SMS
+// because they must handle Send Now Send Later
 //
 import { useAuthStore } from '~/stores/authStore'
 import { useAlertStore } from '~/stores/alertStore'

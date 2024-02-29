@@ -8,8 +8,9 @@
 	definePageMeta({
 		layout: 'false',
 	})
+
 	const url = `https://media.my-test-site.net/api`
-	const data = await fetch(url, {
+	const { data, error } = await useFetch(url, {
 		method: 'GET',
 	})
 </script>

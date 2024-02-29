@@ -121,6 +121,11 @@ export function useNavigationMenu() {
 						icon: 'pi pi-fw pi-folder-open',
 						to: '/stats/team_stats',
 					},
+					{
+						label: 'Youth Flag',
+						icon: 'pi pi-fw pi-folder-open',
+						to: '/flag',
+					},
 				],
 			},
 			{

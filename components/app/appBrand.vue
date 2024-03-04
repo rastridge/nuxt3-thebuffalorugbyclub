@@ -2,10 +2,7 @@
 	<div class="flex justify-content-center" style="color: rgb(210, 0, 0)">
 		<div class="flex align-items-center justify-content-center">
 			<span
-				style="
-					letter-spacing: 0.1em;
-					font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-				"
+				style="letter-spacing: 0.1em; font-family: sans-serif"
 				class="text-6xl md:text-7xl lg:text-7xl xl:text-8xl uppercase font-bold shadow-5 font-itali"
 				>Buffalo</span
 			>
@@ -15,10 +12,7 @@
 		</div>
 		<div class="flex align-items-center justify-content-center">
 			<span
-				style="
-					letter-spacing: 0.1em;
-					font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-				"
+				style="letter-spacing: 0.1em; font-family: sans-serif"
 				class="text-6xl md:text-7xl lg:text-7xl xl:text-8xl uppercase font-bold"
 				>Rugby</span
 			>

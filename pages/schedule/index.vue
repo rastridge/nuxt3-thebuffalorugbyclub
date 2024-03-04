@@ -35,7 +35,7 @@
 								>
 									<div class="flex align-items-end border-soli">
 										<span
-											class="text-sm md:text-md lg:text-lg font-bold text-red-500"
+											class="text-sm md:text-md lg:text-lg font-bold text-white"
 										>
 											{{
 												$dayjs
@@ -69,7 +69,7 @@
 										<Button
 											:label="slotProps.data.title"
 											text
-											class="cursor-pointer text-2xl md:text-3xl text-red-500 font-bold"
+											class="cursor-pointer text-2xl md:text-3xl text-gray-300 shadow-4 font-bold"
 											@click.prevent="showGame(slotProps.data.game_id)"
 										>
 										</Button>
@@ -100,7 +100,7 @@
 									<div class="flex align-items-center border-soli">
 										<Button
 											label="Show history"
-											class="cursor-pointer font-semibold text-300"
+											class="cursor-pointer font-semibold text-gray-300 shadow-4"
 											text
 											size="small"
 											@click="showHistory(slotProps.data.opponent_id)"

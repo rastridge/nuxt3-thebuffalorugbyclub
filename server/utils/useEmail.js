@@ -41,7 +41,7 @@ export default function useEmail() {
 												width: 90%;
 												padding: 25px;
 											}
-											.nl-banner, .nl-footer  { 
+											.nl-banner  { 
 												width: 100%;
 												padding: 0.5rem;
 												color: #FFF;
@@ -51,6 +51,10 @@ export default function useEmail() {
 												text-align: center;
 											}											
 											.nl-footer { 
+												width: 100%;
+												padding: 0.5rem;
+												border: thin solid #000;
+												color: #000;
 												text-align: left;
 												font-size: 1rem;
 

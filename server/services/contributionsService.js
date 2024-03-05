@@ -225,7 +225,7 @@ async function addOne({
 			rows[0].member_firstname +
 			' ' +
 			rows[0].member_lastname +
-			', Thank you for your donation to the Buffalo Rugby Club. Buffalo Rugby is a NYS 501 C3 organization and as such your donation is tax deductible. This email serves as a record that you donated $' +
+			', Thank you for your contribution to the Buffalo Rugby Club. We are a NYS 501 C3 organization and as such your donation is tax deductible. This email serves as a record that you donated $' +
 			contribution_amount +
 			' to your Buffalo Rugby Club'
 		sendEmail(

@@ -7,7 +7,7 @@
 	const route = useRoute()
 	const id = route.params.id
 	// account_id follows the digit 4
-	const account_id = ref(id.substring(id.lastIndexOf('0') + 1, id.length))
+	const account_id = ref(id.substring(id.lastIndexOf('I') + 1, id.length))
 
 	//
 	// Update Account form action

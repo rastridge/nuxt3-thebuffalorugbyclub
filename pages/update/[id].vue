@@ -27,7 +27,6 @@
 			<Title>Update</Title>
 		</Head>
 		<common-header title="Update Membership" />
-		id = {{ id }} account_id = {{ account_id }}
 		<register-update-form :id="account_id" @submitted="onSubmit" />
 	</div>
 </template>

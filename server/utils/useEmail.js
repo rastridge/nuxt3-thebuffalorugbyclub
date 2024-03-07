@@ -108,7 +108,7 @@ export default function useEmail() {
 												</div>`
 
 			const NEWSLETTER_END_STYLES = `<div class="nl-footer"> 
-																			<p>This is Your Current Contact Info. Please <a href="${HOSTING}/update/918275654${recipient.account_id}" target="_blank"> click here update your info if necessary</a></p>
+																			<p>This is Your Current Contact Info. Please <a href="${HOSTING}/update/9182756540${recipient.account_id}" target="_blank"> click here update your info if necessary</a></p>
 																			<table>
 																				<tbody>
 																					<tr><td>${recipient.member_firstname} ${recipient.member_lastname}</td></tr>

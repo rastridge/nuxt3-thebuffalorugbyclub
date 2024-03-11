@@ -37,15 +37,15 @@ export default function useEmail() {
 													}
 												}
 											.nl-container {	
-												background-color: #C6C6C6;
+												background-color: #FFF;
 												width: 90%;
 												padding: 25px;
 											}
 											.nl-banner  { 
 												width: 100%;
 												padding: 0.5rem;
-												color: #FFF;
-												background-color: #00D;
+												color: #00F;
+												background-color: #FFF;
 												font-family: Verdana, Geneva, sans-serif;
 												font-weight: bold;
 												text-align: center;

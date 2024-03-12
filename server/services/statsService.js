@@ -807,13 +807,6 @@ async function addOne({
 	ptsAgn,
 	players,
 }) {
-	/* 	const conn = await mysql.createConnection({
-		host: 'mysql.buffalorugby.org',
-		user: 'rastridge',
-		password: 'a1s2d3f4',
-		// database: 'buffalorugby_testing',
-		database: 'buffalorugby',
-	}) */
 	const conn = await getConnectionBuffalorugby()
 
 	try {
@@ -915,13 +908,6 @@ async function editOne({
 	ptsAgn,
 	players,
 }) {
-	/* const conn = await mysql.createConnection({
-		host: 'mysql.buffalorugby.org',
-		user: 'rastridge',
-		password: 'a1s2d3f4',
-		// database: 'buffalorugby_testing',
-		database: 'buffalorugby',
-	}) */
 	const conn = await getConnectionBuffalorugby()
 	try {
 		await conn.query('START TRANSACTION')

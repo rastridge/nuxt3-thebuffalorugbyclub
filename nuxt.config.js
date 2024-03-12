@@ -35,7 +35,6 @@ export default defineNuxtConfig({
 		public: {
 			APP_VERSION: pkg.version,
 			APP_NAME: pkg.name,
-			HOST: process.env.HOST,
 			TITLE: process.env.TITLE,
 			GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
 		},

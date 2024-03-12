@@ -7,7 +7,6 @@ const { sendEmail } = useEmail()
 // const { HOST } = useRuntimeConfig()
 
 const HOSTING = 'https://thebuffalorugby.club'
-// const HOSTING = 'http://localhost:3000'
 
 export const votesService = {
 	getAll,

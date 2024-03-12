@@ -1,5 +1,5 @@
 <template>
-	<div id="events">
+	<div id="event">
 		<Head>
 			<Title>Buffalo Rugby Club Events</Title>
 		</Head>

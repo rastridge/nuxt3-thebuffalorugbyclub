@@ -216,9 +216,8 @@ async function addOne({
 			'</h3>'
 
 		await sendEmail(
-			// CONFIG.TO,
-			'ron.astridge@icloud.com',
-			'Buffalo Rugby Club Flag Account Modification',
+			CONFIG.TO_FLAG,
+			'Buffalo Rugby Club Flag Account Creation',
 			message
 		)
 	} else {
@@ -341,8 +340,7 @@ async function addFlagByRegister({
 			'</h3>'
 
 		await sendEmail(
-			// CONFIG.TO,
-			'ron.astridge@icloud.com',
+			CONFIG.TO_FLAG,
 			'Buffalo Rugby Club Flag Account Creation',
 			msg
 		)
@@ -472,8 +470,7 @@ async function editOne({
 			body_html: msg,
 		} */
 		await sendEmail(
-			// CONFIG.TO,
-			'ron.astridge@icloud.com',
+			CONFIG.TO_FLAG,
 			'Buffalo Rugby Club Flag Account Modification',
 			msg
 		)

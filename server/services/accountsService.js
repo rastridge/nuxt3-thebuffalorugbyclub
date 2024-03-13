@@ -232,7 +232,7 @@ async function addOne(info) {
 
 			await sendEmail(
 				CONFIG.TO,
-				'Buffalo Rugby Club Member Account Addition',
+				'Buffalo Rugby Club Member Account Creation',
 				email_msg
 			)
 		} else {

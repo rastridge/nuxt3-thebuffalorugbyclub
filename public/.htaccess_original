@@ -1,0 +1,112 @@
+Options -Indexes
+RewriteEngine On
+#
+# See https://htaccess.madewithlove.com/ for debugging
+#
+Redirect 301 "/" "https://thebuffalorugby.club/"
+#
+RewriteRule ^about-us /content/1 [R]
+#
+RewriteRule ^join /content/55 [R]
+#
+RewriteRule ^directions /content/2 [R]
+#
+RewriteRule ^online-payments /payments [R]
+#
+RewriteRule ^community-service /content/75 [R]
+#
+RewriteRule ^admin-login /loginpage [R]
+#
+RewriteRule ^officers /members/officers [R]
+#
+RewriteRule ^virtual-clubhouse /clubhouse [R]
+#
+RewriteRule ^schedule-and-results7s /schedule [R]
+#
+RewriteRule ^schedule-and-results /schedule [R]
+#
+RewriteRule ^flag-register /register/flag [R]
+#
+RewriteRule ^wall-of-fame /clubhouse/wof [R]
+#
+RewriteRule ^videos /video [R]
+#
+RewriteRule ^site/video /video [R]
+#
+RewriteRule ^team-statistics /statss/team_stats [R]
+#
+RewriteRule ^player-statistics /statss/player_stats [R]
+#
+RewriteRule ^photos /content/34 [R]
+#
+#
+# RewriteRule ^history /content/74 [R]
+#
+RewriteRule ^player-games-history /statss/player_history [R]
+##
+RewriteCond %{QUERY_STRING} ^id=([0-9]*)
+RewriteRule ^site/stats/detail.php$ /schedule/page/%1? [R,L]
+#
+RewriteRule ^site/stats$ /schedule [R]
+#
+RewriteRule ^buffalogallery/v /content/34 [R]
+#
+RewriteRule ^v-web/gallery /content/34 [R]
+#
+RewriteRule ^gallery3/index.php /content/34 [R]
+#
+RewriteRule ^site/newsletters/newsletters_archive.php /archive/newsletters  [R]
+#
+RewriteCond %{QUERY_STRING} ^id=(\d*[^&])$
+RewriteRule ^site/news/detail.php /archive/news/page/%1? [R,L]
+#
+RewriteCond %{QUERY_STRING} ^index=(\d*[^&])
+RewriteRule ^site/news/detail_for_FB.php /archive/news/page/%1? [R,L]
+#
+RewriteRule ^site/news/news_archive.php /archive/news  [R]
+#
+RewriteRule ^archive$ /archive/documents  [R]
+#
+RewriteRule ^50th-anniversary /content/58 [R]
+#
+FallbackResource /index.html
+#
+# https://buffalorugby.org/site/stats/detail.php?id=1863&season=2019_Spring
+#
+# no change? not needed
+#RewriteRule ^news$ /news [R]
+#RewriteRule ^register/flag /register/flag [R]
+#RewriteRule ^register/men /register/men [R]
+#RewriteRule ^members /members [R]
+#RewriteRule ^sponsors /sponsors [R]
+#RewriteRule ^register /register [R]
+#RewriteRule ^contributions /contributions [R]
+
+# un needed?
+#RewriteRule ^officers-detail/(\w+)/?$ /site/officers/detail.php?id=$1  [L]
+#
+#RewriteRule ^site-search  /site/customPages/index.php?id=40 [L]
+#
+#RewriteRule ^member-login  /site/accounts/ [L]
+#
+#RewriteRule ^game-stats/(\w+)/?$ /site/stats/detail.php?id=$1 [L]
+#
+#RewriteRule ^mens-division-2  /site/customPages/index.php?id=64 [L]
+#
+#RewriteRule ^mens-division-3  /site/customPages/index.php?id=65 [L]
+#
+#RewriteRule ^buffalo-sevens  /site/customPages/index.php?id=59 [L]
+#
+#RewriteRule ^news/detail\.php(\w+)/?$ /site/news/detail.php?id=$1 [L]
+#
+#RewriteRule ^calendar  /site/customPages/index.php?id=63 [L]
+#
+#RewriteRule ^player-resumes  /site/members/resumes.php [L]
+#
+#RewriteRule ^rugby-links  /site/customPages/index.php?id=67 [L]
+#
+#RewriteRule ^sevens  /site/customPages/index.php?id=69 [L]
+#
+#RewriteRule ^flag-rugby  /site/members-flag [L]
+#
+#RewriteRule ^community-links /site/community-links/ [L]

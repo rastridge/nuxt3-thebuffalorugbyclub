@@ -355,7 +355,7 @@
 	// }
 	// player names suggestions
 	const {
-		data: sug,
+		data: players_sug,
 		error: error4,
 		pending: pending_suggestions,
 	} = await useFetch(`/accounts/suggestions`, {
@@ -365,6 +365,7 @@
 		},
 		// lazy: true,
 	})
+	suggestion.value = players_sug.value
 
 	// opponent names suggestions
 	//

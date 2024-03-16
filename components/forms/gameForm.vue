@@ -365,7 +365,7 @@
 		},
 		// lazy: true,
 	})
-	suggestion.value = players_sug.value
+	suggestions.value = players_sug.value
 
 	// opponent names suggestions
 	//

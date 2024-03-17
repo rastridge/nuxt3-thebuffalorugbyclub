@@ -1,12 +1,11 @@
 ﻿import mysql from 'mysql2/promise'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-const { EE_API_KEY, API_SECRET } = useRuntimeConfig()
 const { sendEmail } = useEmail()
 const { doDBQueryBuffalorugby } = useQuery()
 const { getConnectionBuffalorugby } = useDBConnection()
 
-const config = useRuntimeConfig()
+const CONFIG = useRuntimeConfig()
 
 export const usersService = {
 	authenticate,
@@ -111,7 +110,7 @@ async function authenticate({ username, password }) {
 		// add permissions to user
 		const perms = await _getPerms(user.admin_user_id)
 		user.perms = perms
-		const token = await jwt.sign(user.admin_user_id, config.API_SECRET)
+		const token = await jwt.sign(user.admin_user_id, CONFIG.API_SECRET)
 		user.token = token
 	} else {
 		user = { match: false }

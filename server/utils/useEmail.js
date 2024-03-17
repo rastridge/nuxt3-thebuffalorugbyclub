@@ -2,7 +2,7 @@ import querystring from 'querystring'
 import https from 'https'
 
 export default function useEmail() {
-	const { EE_API_KEY, FROM, FROM_NAME } = useRuntimeConfig()
+	const CONFIG = useRuntimeConfig()
 
 	const HOSTING = 'https://thebuffalorugby.club'
 	// const HOSTING = 'http://localhost:3000'
@@ -17,7 +17,7 @@ export default function useEmail() {
 		function composeEmail(recipient, newsletter_body_html, newsletter_subject) {
 			// this should work if and when email works
 			const TRACKING = `${HOSTING}/newsletters/track?account_id=${recipient.account_id}&newsletter_id=${newsletter_id}`
-			const TRACKINGPIXEL = `<img src="${TRACKING}" height="1" width="1"  />`
+			// const TRACKINGPIXEL = `<img src="${TRACKING}" height="1" width="1"  />`
 			const BEGIN_HTML = `<!DOCTYPE html>
 											<html>
 											<head>
@@ -127,8 +127,8 @@ export default function useEmail() {
 									</html>`
 
 			const email = {
-				// from: FROM,
-				// fromName: FROM_NAME,
+				// from: CONFIG.FROM,
+				// fromName: CONFIG.FROM_NAME,
 				to: recipient.account_email,
 				subject: newsletter_subject,
 				// body_text: '',
@@ -146,10 +146,10 @@ export default function useEmail() {
 				`to = ${to}  subject = ${subject} HOSTiNG = ${HOSTING}`
 			) */
 			const post_data = querystring.stringify({
-				api_key: EE_API_KEY,
+				api_key: CONFIG.EE_API_KEY,
 				subject: subject,
-				from: FROM,
-				fromName: FROM_NAME,
+				from: CONFIG.FROM,
+				fromName: CONFIG.FROM_NAME,
 				to: to,
 				body_html: message,
 				body_text: '',
@@ -230,10 +230,10 @@ export default function useEmail() {
 			`to = ${to}  subject = ${subject} message = ${message}`
 		) */
 		const post_data = querystring.stringify({
-			api_key: EE_API_KEY,
+			api_key: CONFIG.EE_API_KEY,
 			subject: subject,
-			from: FROM,
-			fromName: FROM_NAME,
+			from: CONFIG.FROM,
+			fromName: CONFIG.FROM_NAME,
 			to: to,
 			body_html: message,
 			body_text: '',

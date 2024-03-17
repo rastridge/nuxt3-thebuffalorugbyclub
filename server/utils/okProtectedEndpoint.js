@@ -1,12 +1,12 @@
 import jwt from 'jsonwebtoken'
 export default (event) => {
-	const runtimeConfig = useRuntimeConfig()
+	const CONFIG = useRuntimeConfig()
 
 	const token = getHeaders(event).authorization
 	let ok = true
 	let verified = ''
 	if (token) {
-		verified = jwt.verify(token, runtimeConfig.API_SECRET)
+		verified = jwt.verify(token, CONFIG.API_SECRET)
 	}
 	if (!verified || !token) {
 		throw createError({

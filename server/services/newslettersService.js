@@ -1,6 +1,6 @@
 import mysql from 'mysql2/promise'
 
-const {
+/* const {
 	DB_DATABASE,
 	DB_PASSWORD,
 	DB_USER,
@@ -8,7 +8,7 @@ const {
 	FROM,
 	FROM_NAME,
 	EE_API_KEY,
-} = useRuntimeConfig()
+} = useRuntimeConfig() */
 
 const { doDBQueryBuffalorugby } = useQuery()
 const { getConnectionBuffalorugby } = useDBConnection()

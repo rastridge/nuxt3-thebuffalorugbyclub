@@ -63,6 +63,8 @@
 	//
 	// quill modules
 	//
+	const { MEDIA_URL } = useRuntimeConfig()
+
 	const modules = {
 		module: ImageUploader,
 		options: {
@@ -71,7 +73,7 @@
 				formData.append('file', file)
 				openProgressModal()
 				// Find server code in folder Nuxt3-brc-media-api
-				const url = `https://media.buffalorugby.org/api/images/${props.app}`
+				const url = `${MEDIA_URL}${props.app}`
 				// 	const url = `https://media.thebuffalorugby.club/api/images/${props.app}`
 
 				const res = await fetch(url, {

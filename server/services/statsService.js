@@ -1,5 +1,5 @@
 import mysql from 'mysql2/promise'
-const { SEASON_DIVIDE_DATE } = useRuntimeConfig()
+const CONFIG = useRuntimeConfig()
 const { doDBQueryBuffalorugby } = useQuery()
 const { getConnectionBuffalorugby } = useDBConnection()
 
@@ -346,7 +346,7 @@ async function getSeason(year1) {
 								AND t.game_type_id = g.game_type_id
 
 								AND ( FROM_UNIXTIME(g.date_ut,'%Y') = ${year1} OR FROM_UNIXTIME(g.date_ut,'%Y') = ${YEAR2} )
-								AND date_ut > UNIX_TIMESTAMP(CONCAT("${year1}","${SEASON_DIVIDE_DATE}")) AND  date_ut <= UNIX_TIMESTAMP(CONCAT("${YEAR2}","${SEASON_DIVIDE_DATE}"))
+								AND date_ut > UNIX_TIMESTAMP(CONCAT("${year1}","${CONFIG.SEASON_DIVIDE_DATE}")) AND  date_ut <= UNIX_TIMESTAMP(CONCAT("${YEAR2}","${CONFIG.SEASON_DIVIDE_DATE}"))
 			
 							ORDER BY
 								g.date_ut DESC`
@@ -416,14 +416,14 @@ async function getSeason(year1) {
 											INTERVAL g.date_ut SECOND
 									),
 									INTERVAL 9 HOUR
-							) > '${year1 + SEASON_DIVIDE_DATE}' 
+							) > '${year1 + CONFIG.SEASON_DIVIDE_DATE}' 
 								AND DATE_ADD(
 									DATE_ADD(
 											FROM_UNIXTIME(0),
 											INTERVAL g.date_ut SECOND
 									),
 									INTERVAL 9 HOUR
-							) < '${YEAR2 + SEASON_DIVIDE_DATE}'
+							) < '${YEAR2 + CONFIG.SEASON_DIVIDE_DATE}'
 
 					ORDER BY
 							g.date_ut ASC`

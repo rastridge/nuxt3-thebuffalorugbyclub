@@ -9,8 +9,8 @@
 		layout: 'false',
 	})
 
-	// const url = `https://media.buffalorugby.org/api`
-	const url = `https://media.thebuffalorugby.club/api`
+	const url = `https://media.buffalorugby.org/api`
+	// const url = `https://media.thebuffalorugby.club/api`
 
 	const { data, error } = await useFetch(url, {
 		method: 'GET',

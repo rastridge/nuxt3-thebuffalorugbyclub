@@ -81,7 +81,6 @@
 						authorization: auth.user.token,
 					},
 				})
-
 				const data = await res.json()
 				closeProgressModal()
 				return data.imageUrl

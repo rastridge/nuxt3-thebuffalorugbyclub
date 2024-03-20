@@ -19,7 +19,7 @@
 		</div>
 	</div>
 	<p class="text-center text-sm md:text-lg lg:text-xl text-white">
-		Home Field Delaware Park | Meet up KO's Bar and Grilleee
+		Home Field Delaware Park | Meet up KO's Bar and Grill
 	</p>
 </template>
 

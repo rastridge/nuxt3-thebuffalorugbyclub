@@ -22,7 +22,7 @@
 
 /archive/news/ /archives/news
 
-/archive/news/page id=:id /archives/news/page/:id
+/archive/news/page/:id /archives/news/page/:id
 
 /statss/player_stats /stats/player_stats
 

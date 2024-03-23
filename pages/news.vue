@@ -315,7 +315,11 @@
 						<span class="text-sm">
 							{{ $dayjs(item.dt).format('MMM D, YYYY') }} </span
 						><br />
-						{{ item.news_title }}
+						<div
+							class="shadow-6 surface-400 text-gray-900 p-1 m-1 border-round-lg text-lg"
+						>
+							{{ item.news_title }}
+						</div>
 					</template>
 					<template #subtitle>
 						<span class="text-white font-bold"
@@ -324,9 +328,22 @@
 					>
 
 					<template #footer>
-						<a href="#" @click.prevent="openModal(item)"
-							><span class="text-white">Read More</span></a
+						<button
+							style="
+								border-radius: 15px;
+								background: #e0e0e0;
+								border-radius: 50px;
+								background: transparent;
+								box-shadow: 2px 2px 6px #c7c7c7, -2px -2px 6px #f9f9f9;
+							"
 						>
+							<a href="#" @click.prevent="openModal(item)"
+								><span class="p-1 text-white">Read More</span></a
+							>
+						</button>
+						<!-- 						<a href="#" @click.prevent="openModal(item)"
+							><span class="text-white">Read More</span></a
+						> -->
 					</template>
 				</Card>
 			</div>

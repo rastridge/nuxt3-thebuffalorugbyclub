@@ -1,8 +1,8 @@
-/site/news/detail.php id=:id /archives/news/page/:id
+/site/news/detail.php id=:id /archives/news/page/:id 
 
 /site/news/news_archive.php /archives/news
 
-/site/stats/detail.php  id=:id /schedule/page/:id
+/site/stats/detail.php  id=:id /schedule/page/:id 
 
 /site/stats /schedule
 
@@ -18,7 +18,9 @@
 
 /members/officers /officers
 
-/archive/newsletters/ /archives/newsletters
+/archive/newsletters /archives/newsletters
+
+/archive/documents /archives/documents
 
 /archive/news/ /archives/news
 

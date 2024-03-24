@@ -43,8 +43,8 @@ export default defineNuxtConfig({
 		'@pinia/nuxt',
 		'@nuxt/image',
 		// '@vueuse/nuxt',
-		'nuxt-simple-robots',
 		'nuxt-gtag',
+
 		[
 			'@nuxtjs/google-fonts',
 			{
@@ -55,18 +55,12 @@ export default defineNuxtConfig({
 			},
 		],
 	],
-	googleFonts: {
-		outputDir: 'assets/fonts',
-	},
-
 	gtag: {
 		id: process.env.GOOGLE_ANALYTICS_ID, // Use as fallback if no runtime config is provided
 	},
-
-	/* 	robots: {
-		// provide simple disallow rules for all robots `user-agent: *`
-		disallow: ['/'],
-	}, */
+	googleFonts: {
+		outputDir: 'assets/fonts',
+	},
 
 	components: [
 		'~/components/app',

@@ -316,7 +316,7 @@
 							{{ $dayjs(item.dt).format('MMM D, YYYY') }} </span
 						><br />
 						<div
-							class="shadow-6 surface-400 text-gray-900 p-1 m-1 border-round-lg text-lg"
+							class="shadow-6 surface-400 text-gray-900 p-1 m-1 border-round-lg text-lg text-center"
 						>
 							{{ item.news_title }}
 						</div>

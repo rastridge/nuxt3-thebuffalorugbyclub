@@ -104,7 +104,6 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-
 	pinia: {
 		autoImports: [
 			// automatically imports `defineStore`

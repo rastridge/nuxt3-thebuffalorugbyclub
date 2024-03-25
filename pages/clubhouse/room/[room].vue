@@ -52,9 +52,6 @@
 	otherdata.value = data.value
 
 	// Find server code in folder Nuxt3-brc-media-api
-
-	/* 	import mediumZoom from 'medium-zoom/dist/pure'
-	import 'medium-zoom/dist/style.css' */
 </script>
 
 <style scoped>

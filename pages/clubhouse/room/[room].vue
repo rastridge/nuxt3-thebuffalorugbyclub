@@ -51,8 +51,6 @@
 	)
 	otherdata.value = data.value
 
-	// const CONFIG = useRuntimeConfig()
-
 	// Find server code in folder Nuxt3-brc-media-api
 
 	/* 	import mediumZoom from 'medium-zoom/dist/pure'

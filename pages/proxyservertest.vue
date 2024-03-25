@@ -8,9 +8,9 @@
 	definePageMeta({
 		layout: 'false',
 	})
+	const CONFIG = useRuntimeConfig()
 
-	const url = `https://media.buffalorugby.org/api`
-	// const url = `https://media.thebuffalorugby.club/api`
+	const url = `${CONFIG.public.IMAGES_URL}/api`
 
 	const { data, error } = await useFetch(url, {
 		method: 'GET',

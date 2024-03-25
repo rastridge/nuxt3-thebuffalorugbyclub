@@ -37,6 +37,7 @@
 	useHead({
 		title: 'Buffalo Rugby Clubhouse',
 	})
+	const CONFIG = useRuntimeConfig()
 
 	const wofdata = ref(null)
 

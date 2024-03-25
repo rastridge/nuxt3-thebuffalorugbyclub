@@ -20,7 +20,8 @@
 		>
 			<div v-for="item in otherdata" :key="item.id" class="">
 				<div class="w-25rem border-1">
-					<img :src="item.clubhouse_filepath" class="w-full" />
+					<img :src="item.clubhouse_filepath" class="w-full image-zoomable" />
+
 					<div class="caption">
 						{{ item.clubhouse_description }}
 					</div>
@@ -49,6 +50,13 @@
 		}
 	)
 	otherdata.value = data.value
+
+	// const CONFIG = useRuntimeConfig()
+
+	// Find server code in folder Nuxt3-brc-media-api
+
+	/* 	import mediumZoom from 'medium-zoom/dist/pure'
+	import 'medium-zoom/dist/style.css' */
 </script>
 
 <style scoped>

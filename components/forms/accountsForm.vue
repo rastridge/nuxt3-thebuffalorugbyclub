@@ -346,10 +346,9 @@
 			formData.append('file', file)
 			openProgressModal()
 			// Find server code in folder Nuxt3-brc-media-api
+			const CONFIG = useRuntimeConfig()
 
-			const url = `https://media.buffalorugby.org/api/images/wof`
-			// const url = `https://media.my-test-site.net/api/images/wof``
-			// const url = `https://media.buffalorugby.org/images/wof``
+			const url = `${CONFIG.public.MEDIA_URL}wof`
 
 			const res = await fetch(url, {
 				method: 'POST',

@@ -6,6 +6,7 @@
 		<div>
 			<common-header title="Virtual Clubhouse" />
 		</div>
+
 		<div class="bg">
 			<div class="flex flex-wrap align-self-start justify-content-center">
 				<div
@@ -13,13 +14,8 @@
 				>
 					<nuxt-link :to="`/clubhouse/other/wof`">
 						<div class="container">
-							<a>
-								<img
-									src="https://media.buffalorugby.org/imgs/wood-door.png"
-									class="w-full"
-								/>
-							</a>
-							<div class="centered text-sm md:text-lg">Wall of Fame</div>
+							<a> <img :src="DOOR" class="w-full" /></a>
+							<span class="centered text-sm md:text-lg">Wall of Fame</span>
 						</div>
 					</nuxt-link>
 				</div>
@@ -29,12 +25,7 @@
 					<div>
 						<nuxt-link :to="`/clubhouse/room/photo`">
 							<div class="container">
-								<a>
-									<img
-										src="https://media.buffalorugby.org/imgs/wood-door.png"
-										class="w-full"
-									/>
-								</a>
+								<a> <img :src="DOOR" class="w-full" /></a>
 								<div class="centered text-sm md:text-lg">Team Photos Room</div>
 							</div>
 						</nuxt-link>
@@ -45,15 +36,12 @@
 					class="flex flex-column justify-content-center text-sm md:text-lg font-semibold text-white w-6rem md:w-8rem md:w-10rem p-2"
 				>
 					<nuxt-link :to="`/clubhouse/room/trophy`">
-						<div class="container">
-							<a>
-								<img
-									src="https://media.buffalorugby.org/imgs/wood-door.png"
-									class="w-full"
-								/>
-							</a>
-							<div class="centered text-sm md:text-lg">Trophy Room</div>
-						</div>
+						<a>
+							<div class="container">
+								<img :src="DOOR" class="w-full" />
+								<div class="centered text-sm md:text-lg">Trophy Room</div>
+							</div></a
+						>
 					</nuxt-link>
 				</div>
 
@@ -62,11 +50,7 @@
 				>
 					<nuxt-link :to="'/clubhouse/room/plaque'">
 						<div class="container">
-							<a>
-								<img
-									src="https://media.buffalorugby.org/imgs/wood-door.png"
-									class="w-full"
-							/></a>
+							<a> <img :src="DOOR" class="w-full" /></a>
 							<div class="centered text-sm md:text-lg">Plaques Room</div>
 						</div>
 					</nuxt-link>
@@ -77,11 +61,7 @@
 				>
 					<nuxt-link :to="'/clubhouse/room/jersey'">
 						<div class="container">
-							<a>
-								<img
-									src="https://media.buffalorugby.org/imgs/wood-door.png"
-									class="w-full"
-							/></a>
+							<a> <img :src="DOOR" class="w-full" /></a>
 							<div class="centered text-sm md:text-lg">Jerseys Room</div>
 						</div>
 					</nuxt-link>
@@ -92,12 +72,8 @@
 				>
 					<nuxt-link :to="'/clubhouse/room/ball'">
 						<div class="container">
-							<a>
-								<img
-									src="https://media.buffalorugby.org/imgs/wood-door.png"
-									class="w-full"
-							/></a>
-							<div class="centered text-sm md:text-lg">Balls Room</div>
+							<a> <img :src="DOOR" class="w-full" /></a>
+							<div class="centered text-sm md:text-lg">Ball Room</div>
 						</div>
 					</nuxt-link>
 				</div>
@@ -107,12 +83,18 @@
 </template>
 
 <script setup>
-	const door = ref('https://media.buffalorugby.org/imgs/wood-door.png')
+	const CONFIG = useRuntimeConfig()
+
+	// const apiurl = `${CONFIG.public.MEDIA_URL}`
+	// const imagesurl = `${CONFIG.public.IMAGES_URL}/imgs/wood-door.png`
+
+	const DOOR = `${CONFIG.public.IMAGES_URL}/imgs/wood-door.png`
 </script>
 
 <style scoped>
 	.bg {
 		background-image: url('https://media.buffalorugby.org/_img/_backgrounds/wood_clubhouse.jpg');
+		/* background-image: url(`${CONFIG.public.IMAGES_URL}/_img/_backgrounds/wood_clubhouse.jpg`); */
 		/* Center and scale the image nicely */
 		background-position: center;
 		background-repeat: no-repeat;
@@ -125,13 +107,13 @@
 	.container {
 		position: relative;
 		text-align: center;
-		color: white;
+		color: rgb(219, 215, 215);
 	}
 	/* Centered text */
 	.centered {
 		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
+		top: 40%;
+		left: 55%;
+		transform: translate(-60%, -45%);
 	}
 </style>

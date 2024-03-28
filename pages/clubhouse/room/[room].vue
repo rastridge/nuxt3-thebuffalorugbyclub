@@ -19,10 +19,17 @@
 			"
 		>
 			<div v-for="item in otherdata" :key="item.id" class="">
-				<div class="w-25rem border-1">
+				<div
+					class="w-25rem border-2"
+					style="
+						-webkit-box-shadow: 10px 9px 13px -5px rgba(0, 0, 0, 0.61);
+						-moz-box-shadow: 10px 9px 13px -5px rgba(0, 0, 0, 0.61);
+						box-shadow: 10px 9px 13px -5px rgba(0, 0, 0, 0.61);
+					"
+				>
 					<img :src="item.clubhouse_filepath" class="w-25rem image-zoomable" />
 
-					<div class="caption">
+					<div class="caption font-semibold">
 						{{ item.clubhouse_description }}
 					</div>
 				</div>
@@ -63,7 +70,11 @@
 		background-size: cover;
 		text-align: center;
 		padding: 0.5em;
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		-webkit-box-shadow: 10px 9px 13px -5px rgba(0, 0, 0, 0.61);
+		-moz-box-shadow: 10px 9px 13px -5px rgba(0, 0, 0, 0.61);
+		box-shadow: 10px 9px 13px -5px rgba(0, 0, 0, 0.61);
 		font-size: small;
+		font-weight: bold;
+		color: black;
 	}
 </style>

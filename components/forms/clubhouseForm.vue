@@ -39,6 +39,8 @@
 			/>
 			<div class="my-fileupload-wrapper-style">
 				<p>Clubhouse Image file {{ state.clubhouse_filepath }}</p>
+				<Image :src="state.clubhouse_filepath" alt="Image" width="160" />
+
 				<FileUpload
 					class="mb-4 my-text-style"
 					mode="basic"

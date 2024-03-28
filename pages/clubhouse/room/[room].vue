@@ -20,7 +20,7 @@
 		>
 			<div v-for="item in otherdata" :key="item.id" class="">
 				<div class="w-25rem border-1">
-					<img :src="item.clubhouse_filepath" class="w-full image-zoomable" />
+					<img :src="item.clubhouse_filepath" class="w-25rem image-zoomable" />
 
 					<div class="caption">
 						{{ item.clubhouse_description }}

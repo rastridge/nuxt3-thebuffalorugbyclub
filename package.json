@@ -24,6 +24,7 @@
 		"@nuxt/image": "^1.0.0-rc.1",
 		"@nuxtjs/google-fonts": "^3.0.0",
 		"@pinia/nuxt": "^0.4.9",
+		"@stefanobartoletti/nuxt-social-share": "^0.5.4",
 		"c8": "^7.13.0",
 		"medium-zoom": "^1.1.0",
 		"nuxt": "^3.8.2",

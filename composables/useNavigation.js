@@ -1,6 +1,6 @@
 import { useAuthStore } from '~/stores/authStore'
 const auth = useAuthStore()
-import { useMenuStore } from '@/stores'
+import { useMenuStore } from '~/stores/menuStore'
 const menuStore = useMenuStore()
 const customMenuItems = menuStore.getCustomMenuItems
 

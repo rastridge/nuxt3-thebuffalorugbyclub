@@ -45,7 +45,6 @@ export default defineNuxtConfig({
 		'@nuxt/image',
 		// '@vueuse/nuxt',
 		'nuxt-gtag',
-
 		[
 			'@nuxtjs/google-fonts',
 			{
@@ -55,7 +54,12 @@ export default defineNuxtConfig({
 				},
 			},
 		],
+		'@stefanobartoletti/nuxt-social-share',
 	],
+
+	socialShare: {
+		// module options
+	},
 	gtag: {
 		id: process.env.GOOGLE_ANALYTICS_ID, // Use as fallback if no runtime config is provided
 	},

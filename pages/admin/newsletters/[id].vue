@@ -1,3 +1,26 @@
+<template>
+	<div>
+		<Head>
+			<Title>Edit Newsletter {{ id }}</Title>
+		</Head>
+
+		<div class="topsectioncenter">
+			<div class="topsectionitem">
+				<admin-header title="Edit Newsletter" />
+			</div>
+			<div class="topsectionitem">
+				<div class="p-2 w-full border-1">
+					<SocialShare
+						network="facebook"
+						url="https://buffalorugby.org/archives/newsletters/page/2666"
+					/>
+				</div>
+			</div>
+			<newsletters-form :id="id" @submitted="onSubmit" />
+		</div>
+	</div>
+</template>
+
 <script setup>
 	definePageMeta({
 		middleware: ['auth'],
@@ -6,6 +29,11 @@
 	import { useAlertStore } from '~/stores/alertStore'
 	const alert = useAlertStore()
 	const { editNewsletter } = useNewsletter()
+
+	/* 	const shareFacebook = useSocialShare({
+		network: 'facebook',
+		url: 'https://buffalorugby.org/archives/newsletters/page/2666',
+	}) */
 
 	//
 	// Get news item id
@@ -39,21 +67,6 @@
 		})
 	}
 </script>
-
-<template>
-	<div>
-		<Head>
-			<Title>Edit Newsletter {{ id }}</Title>
-		</Head>
-
-		<div class="topsectioncenter">
-			<div class="topsectionitem">
-				<admin-header title="Edit Newsletter" />
-			</div>
-			<newsletters-form :id="id" @submitted="onSubmit" />
-		</div>
-	</div>
-</template>
 
 <style lang="scss" scoped>
 	@import 'sweetalert2/src/sweetalert2.scss';

@@ -154,12 +154,7 @@ async function getOne(id) {
 }
 
 async function editOne({ vote_question, choices, id }) {
-	const conn = await mysql.createConnection({
-		host: 'mysql.buffalorugby.org',
-		user: 'rastridge',
-		password: 'a1s2d3f4',
-		database: 'buffalorugby',
-	})
+	const conn = await getConnectionBuffalorugby()
 
 	try {
 		await conn.query('START TRANSACTION')
@@ -233,12 +228,7 @@ async function addOne({ vote_question, choices }) {
 }
 
 async function registerBallot({ account_email, answers }) {
-	const conn = await mysql.createConnection({
-		host: 'mysql.buffalorugby.org',
-		user: 'rastridge',
-		password: 'a1s2d3f4',
-		database: 'buffalorugby',
-	})
+	const conn = await getConnectionBuffalorugby()
 
 	try {
 		await conn.query('START TRANSACTION')

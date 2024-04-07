@@ -101,36 +101,39 @@ async function addOne({
 	ad_image_path,
 }) {
 	// check for other users with proposed email address
+	let msg = null // will be returned with message if email exists
+	const lc_ad_client_email = ad_client_email.toLowerCase()
 	let sql = `select * from inbrc_sponsors where deleted = 0`
-	const sponsors = await doDBQueryBuffalorugby(sql)
-	let sponsor = sponsors.find((u) => u.ad_client_email === ad_client_email)
+	const temp = await doDBQueryBuffalorugby(sql)
+	const emailExists = temp.find(
+		(u) => u.ad_client_email.toLowerCase() === lc_ad_client_email
+	)
 
-	if (!sponsor) {
+	if (!emailExists) {
 		sql = `INSERT INTO inbrc_sponsors
-                SET
-								ad_client_name = ?,
-								ad_client_contact = ?,
-								ad_client_email = ?,
-								ad_client_phone = ?,
-								ad_client_website = ?,
-								ad_image_path = ?,
+						SET
+						ad_client_name = ?,
+						ad_client_contact = ?,
+						ad_client_email = ?,
+						ad_client_phone = ?,
+						ad_client_website = ?,
+						ad_image_path = ?,
 
-								STATUS = 1,
-								deleted = 0,
-								created_dt = NOW(),
-								modified_dt = NOW()`
+						STATUS = 1,
+						deleted = 0,
+						created_dt = NOW(),
+						modified_dt = NOW()`
 
-		var inserts = []
+		let inserts = []
 		inserts.push(
 			ad_client_name,
 			ad_client_contact,
-			ad_client_email,
+			lc_ad_client_email,
 			ad_client_phone,
 			ad_client_website,
 			ad_image_path
 		)
 		const sponsor = await doDBQueryBuffalorugby(sql, inserts)
-		sponsor.error = ''
 
 		/* const email = {
 			from: FROM,
@@ -142,11 +145,9 @@ async function addOne({
 		}
 		sendEmail(email) */
 	} else {
-		sponsor.error = `Sponsor with email ${ad_client_email} already exists`
-		console.log(sponsor.error)
+		msg = `Sponsor with email ${lc_ad_client_email} already exists`
 	}
-
-	return sponsor
+	return { message: msg }
 }
 
 async function editOne({
@@ -158,14 +159,15 @@ async function editOne({
 	ad_image_path,
 	id,
 }) {
-	// check for existing email
+	// check for other users with proposed email address
+	let msg = null // will be returned with message if email exists
+	const lc_ad_client_email = ad_client_email.toLowerCase()
 	let sql = `SELECT * FROM inbrc_sponsors WHERE deleted = 0 AND ad_client_id <> ${id}`
-	const sponsors = await doDBQueryBuffalorugby(sql)
-	const sponsor_exists = sponsors.find(
-		(u) => u.ad_client_email === ad_client_email
+	const temp = await doDBQueryBuffalorugby(sql)
+	const emailExists = temp.find(
+		(u) => u.ad_client_email.toLowerCase() === lc_ad_client_email
 	)
-	let sponsor = ''
-	if (!sponsor_exists) {
+	if (!emailExists) {
 		// undefined - no other sponsors with proposed email
 		let inserts = []
 		sql = `UPDATE inbrc_sponsors SET
@@ -181,14 +183,13 @@ async function editOne({
 		inserts.push(
 			ad_client_name,
 			ad_client_contact,
-			ad_client_email,
+			lc_ad_client_email,
 			ad_client_phone,
 			ad_client_website,
 			ad_image_path,
 			id
 		)
-		sponsor = await doDBQueryBuffalorugby(sql, inserts)
-		sponsor.error = ''
+		const sponsor = await doDBQueryBuffalorugby(sql, inserts)
 
 		/* const email = {
 			from: FROM,
@@ -200,9 +201,9 @@ async function editOne({
 		}
 		sendEmail(email) */
 	} else {
-		sponsor.error = `Sponsor with email ${ad_client_email} already exists`
+		msg = `Sponsor with email ${lc_ad_client_email} already exists`
 	}
-	return sponsor
+	return { message: msg }
 }
 
 async function deleteOne(id) {

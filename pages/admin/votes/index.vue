@@ -16,7 +16,7 @@
 					<p>2. Create new voting questions</p>
 					<p>
 						3. Send newsletter to voters including this message: "Go to
-						https://thebuffalorugby.club/admin/votes/start to begin voting"
+						https://buffalorugby.org/admin/votes/start to begin voting"
 					</p>
 				</div>
 			</div>

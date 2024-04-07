@@ -103,7 +103,7 @@
 		state.value = events_data.value
 
 		// Format for Primevue calendar
-		/* 		state.value.event_dt = $dayjs(events_data.value.event_dt).format(
+		state.value.event_dt = $dayjs(events_data.value.event_dt).format(
 			'YYYY-MM-DD'
 		)
 		state.value.release_dt = $dayjs(events_data.value.release_dt).format(
@@ -111,7 +111,7 @@
 		)
 		state.value.expire_dt = $dayjs(events_data.value.expire_dt).format(
 			'YYYY-MM-DD'
-		) */
+		)
 	}
 	//
 	// form handlers

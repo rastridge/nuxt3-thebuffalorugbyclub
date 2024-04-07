@@ -4,8 +4,7 @@ import https from 'https'
 export default function useEmail() {
 	const CONFIG = useRuntimeConfig()
 
-	const HOSTING = 'https://thebuffalorugby.club'
-	// const HOSTING = 'http://localhost:3000'
+	const HOSTING = 'https://buffalorugby.org'
 
 	async function sendNewsletters(
 		recipientss,
@@ -127,12 +126,8 @@ export default function useEmail() {
 									</html>`
 
 			const email = {
-				// from: CONFIG.FROM,
-				// fromName: CONFIG.FROM_NAME,
 				to: recipient.account_email,
 				subject: newsletter_subject,
-				// body_text: '',
-				// body_html: BEGIN_HTML + newsletter_body_html + NEWSLETTER_END_STYLES,
 				message: BEGIN_HTML + newsletter_body_html + NEWSLETTER_END_STYLES,
 			}
 			// return email
@@ -141,10 +136,6 @@ export default function useEmail() {
 
 		// local function
 		function sendEmail(to, subject, message) {
-			/* console.log(
-				'IN sendEmail ',
-				`to = ${to}  subject = ${subject} HOSTiNG = ${HOSTING} CONFIG.EE_API_KEY = ${CONFIG.EE_API_KEY}`
-			) */
 			const post_data = querystring.stringify({
 				api_key: CONFIG.EE_API_KEY,
 				subject: subject,

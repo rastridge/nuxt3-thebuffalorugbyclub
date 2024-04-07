@@ -9,12 +9,12 @@
 				<admin-header title="Edit Newsletter" />
 			</div>
 			<div class="topsectionitem">
-				<div class="p-2 w-full border-1">
+				<!-- 				<div class="p-2 w-full border-1">
 					<SocialShare
 						network="facebook"
 						url="https://buffalorugby.org/archives/newsletters/page/2666"
 					/>
-				</div>
+				</div> -->
 			</div>
 			<newsletters-form :id="id" @submitted="onSubmit" />
 		</div>
@@ -29,6 +29,14 @@
 	import { useAlertStore } from '~/stores/alertStore'
 	const alert = useAlertStore()
 	const { editNewsletter } = useNewsletter()
+
+	const share = function () {
+		url =
+			'https://work.workplace.com/sharer.php?display=popup&u=' +
+			window.location.href
+		options = 'toolbar=0,status=0,resizable=1,width=626,height=436'
+		window.open(url, 'sharer', options)
+	}
 
 	/* 	const shareFacebook = useSocialShare({
 		network: 'facebook',

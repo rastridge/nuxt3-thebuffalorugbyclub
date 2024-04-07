@@ -1,7 +1,7 @@
 <template>
 	<div class="my-header-style">
 		{{ title.charAt(0).toUpperCase() + title.slice(1) }}
-		<user-logged-in />
+		<display-user-logged-in />
 	</div>
 </template>
 

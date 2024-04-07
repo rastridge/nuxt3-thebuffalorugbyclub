@@ -13,7 +13,7 @@
 		ogTitle: 'The Buffalo Rugby Club',
 		description: 'Welcome to the Buffalo Rugby Club',
 		ogDescription: 'Welcome to the Buffalo Rugby Club',
-		ogImage: 'https://thebuffalorugby.club/bflo_blue.png',
+		ogImage: 'https://buffalorugby.org/bflo_blue.png',
 	})
 	//
 	// get custom menu items

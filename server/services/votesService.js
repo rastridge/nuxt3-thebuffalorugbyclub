@@ -320,7 +320,7 @@ async function deleteOne(id) {
 		sql = `UPDATE inbrc_votes_choices SET deleted = 1 WHERE vote_question_id = ${id}`
 		await conn.execute(sql)
 
-		await conn.commit()
+		await conn.query('COMMIT')
 		await conn.end()
 		return 'COMMIT'
 	} catch (e) {

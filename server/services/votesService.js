@@ -172,11 +172,11 @@ async function editOne({ vote_question, choices, id }) {
 		await conn.execute(sql)
 
 		// delete existing choices
-		sql = `DELETE FROM inbrc_votes_choices WHERE vote_question_id = ${id}`
+		/* 	sql = `DELETE FROM inbrc_votes_choices WHERE vote_question_id = ${id}`
 		await conn.execute(sql)
-
+ */
 		// insert updated choices
-		await choices.forEach(async (e) => {
+		/* 		await choices.forEach(async (e) => {
 			let sql = `INSERT INTO inbrc_votes_choices
 										( vote_question_id,
 											vote_choice,
@@ -186,9 +186,9 @@ async function editOne({ vote_question, choices, id }) {
 			inserts.push(id, e.vote_choice, e.vote_picked_cnt)
 			sql = mysql.format(sql, inserts)
 			await conn.execute(sql)
-		})
+		}) */
 
-		await conn.commit()
+		await conn.query('COMMIT')
 		await conn.end()
 		return 'COMMIT'
 	} catch (e) {
@@ -271,14 +271,13 @@ async function registerBallot({ account_email, answers }) {
 				conn.execute(sql)
 			}
 		})
-		await conn.commit()
+		await conn.query('COMMIT')
 		await conn.end()
-		console.log('commit')
-		return 'commit'
+		return 'COMMIT'
 	} catch (e) {
 		await conn.query('ROLLBACK')
 		await conn.end()
-		return 'commit'
+		return 'ROLLBACK'
 	}
 }
 

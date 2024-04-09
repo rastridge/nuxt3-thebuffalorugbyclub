@@ -54,7 +54,7 @@
 			#default="{ items, node, value }"
 		>
 			<div v-if="props.id !== 0">
-				<FormKit
+				<!-- 				<FormKit
 					v-for="(item, index) in items"
 					:key="item"
 					:index="index"
@@ -73,6 +73,18 @@
 							$el: 'button',
 						},
 					}"
+				/>
+	-->
+				<FormKit
+					v-for="(item, index) in items"
+					:key="item"
+					:index="index"
+					:label="
+						choices[index].vote_picked_cnt !== undefined
+							? 'Picked ' + choices[index].vote_picked_cnt + ' times'
+							: ''
+					"
+					disabled
 				/>
 			</div>
 			<div v-else>

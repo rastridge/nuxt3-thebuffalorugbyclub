@@ -18,7 +18,7 @@
 					class="my-text-style text-white hover:text-blue-200"
 					@click="redirectToYoutube"
 				>
-					<i class="pi pi-twitter my-text-style" />
+					<i class="pi pi-youtube my-text-style" />
 					<span>youtube</span>
 				</Button>
 			</li>
@@ -28,7 +28,7 @@
 					class="my-text-style text-white hover:text-blue-200"
 					@click="redirectToInstagram"
 				>
-					<i class="pi pi-twitter my-text-style" />
+					<i class="pi pi-instagram my-text-style" />
 					<span>instagram</span>
 				</Button>
 			</li>

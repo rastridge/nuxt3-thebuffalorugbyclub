@@ -181,8 +181,8 @@ async function deleteOne(id) {
 /*              addOne                     */
 /***************************************** */
 async function addOne({ admin_user_name, password, admin_user_email, perms }) {
+	const conn = await getConnectionBuffalorugby()
 	try {
-		const conn = await getConnectionBuffalorugby()
 		await conn.query('START TRANSACTION')
 
 		// check for existing username or email
